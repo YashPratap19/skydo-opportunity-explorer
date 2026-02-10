@@ -1,0 +1,13 @@
+Category,Product,DemandScore,GrowthScore,CompetitionScore,UnitEconomicsScore,DifferentiationScore,ComplianceRiskScore
+Electronics,Wireless Earbuds,8.2,7.6,6.8,7.4,7.9,8.5
+Electronics,Smart Watch,7.5,6.0,8.5,6.5,5.0,7.0
+Electronics,Bluetooth Speaker,6.0,5.5,7.0,6.0,6.5,8.0
+Electronics,USB-C Hub,5.5,4.5,8.0,5.5,4.0,9.0
+Home & Kitchen,Bamboo Cutting Board,7.8,6.5,5.5,8.0,8.5,9.5
+Home & Kitchen,Silicone Spatula,6.5,5.0,9.0,4.5,3.0,9.0
+Home & Kitchen,Airtight Containers,8.0,7.0,7.5,6.5,6.0,8.5
+Apparel,Yoga Pants,9.0,8.5,9.5,7.0,5.5,7.0
+Apparel,Men's Chinos,6.0,4.0,8.0,6.0,4.5,8.0
+Apparel,Running Socks,7.5,6.5,8.5,7.5,5.0,9.0
+Toys & Games,Educational Puzzles,7.0,6.0,5.0,7.0,8.0,9.0
+Toys & Games,Plush Toys,6.5,5.5,6.0,6.5,7.5,8.5

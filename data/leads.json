@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1770577033272",
+    "submittedAt": "2026-02-08T18:57:13.272Z",
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "+91 9876543210",
+    "product": "Bluetooth Headphones",
+    "countryOfInterest": "United States"
+  },
+  {
+    "id": "1770577778921",
+    "submittedAt": "2026-02-08T19:09:38.921Z",
+    "name": "vidhan",
+    "email": "test@gmail.com",
+    "phone": "+91 9347641233",
+    "product": "travel bottles",
+    "countryOfInterest": "United States"
+  },
+  {
+    "id": "1770578778433",
+    "submittedAt": "2026-02-08T19:26:18.433Z",
+    "name": "test user 0902v1",
+    "email": "test@gmail.com",
+    "phone": "+91 9347641233",
+    "product": "diaper pail",
+    "countryOfInterest": "United States"
+  }
+]
