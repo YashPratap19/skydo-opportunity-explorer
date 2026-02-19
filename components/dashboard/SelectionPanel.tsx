@@ -54,7 +54,7 @@ export function SelectionPanel({
     }, [selectedCategory]);
 
     return (
-        <div className="glass-panel rounded-3xl p-8 h-full flex flex-col justify-center animate-fade-in-up sticky top-28">
+        <div className="glass-panel rounded-3xl p-8 h-full flex flex-col justify-center animate-fade-in-up">
             <div className="space-y-8">
                 {/* Country Selection */}
                 <div className="group">
@@ -158,9 +158,12 @@ export function SelectionPanel({
                         </span>
                     </button>
                     <div className="mt-4 text-center">
-                        <button className="text-sm text-slate-500 hover:text-blue-600 font-medium transition-colors">
+                        <a
+                            href="mailto:hello@indianglobalsellers.com?subject=Product%20Request&body=Hi%2C%20I%20would%20like%20to%20request%20insights%20for%20a%20product%20that%20is%20not%20listed%20on%20the%20platform."
+                            className="text-sm text-slate-500 hover:text-blue-600 font-medium transition-colors inline-block"
+                        >
                             Product not listed? <span className="underline underline-offset-4 decoration-slate-300 hover:decoration-blue-600">Request Now</span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

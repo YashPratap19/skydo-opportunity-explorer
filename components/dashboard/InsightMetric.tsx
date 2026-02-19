@@ -6,16 +6,15 @@ interface InsightMetricProps {
     maxScore?: number;
 }
 
-export function InsightMetric({ label, score, maxScore = 10 }: InsightMetricProps) {
-    // Determine color and label based on score
+export function InsightMetric({ label, score, maxScore = 100 }: InsightMetricProps) {
     // Determine color and label based on score
     let textClass = "text-slate-900";
     let statusLabel = "Low";
 
-    if (score >= 8) {
+    if (score >= 70) {
         textClass = "text-emerald-500";
         statusLabel = "Excellent";
-    } else if (score >= 6) {
+    } else if (score >= 45) {
         textClass = "text-amber-500";
         statusLabel = "Good";
     } else {

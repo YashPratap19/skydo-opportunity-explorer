@@ -1,12 +1,34 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 
-const LEADS_FILE = path.join(process.cwd(), 'data', 'leads.json');
+const DATA_DIR = path.join(process.cwd(), 'data');
+const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 
-// Ensure data directory exists
-if (!fs.existsSync(path.join(process.cwd(), 'data'))) {
-    fs.mkdirSync(path.join(process.cwd(), 'data'));
+async function ensureDataDir(): Promise<void> {
+    try {
+        await fs.access(DATA_DIR);
+    } catch {
+        await fs.mkdir(DATA_DIR, { recursive: true });
+    }
+}
+
+async function readLeads(): Promise<any[]> {
+    try {
+        await ensureDataDir();
+        const content = await fs.readFile(LEADS_FILE, 'utf-8');
+        const parsed = JSON.parse(content);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (err: any) {
+        if (err.code === 'ENOENT') return [];
+        console.error('Error reading leads file:', err);
+        return [];
+    }
+}
+
+async function writeLeads(leads: any[]): Promise<void> {
+    await ensureDataDir();
+    await fs.writeFile(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
 }
 
 export async function POST(request: Request) {
@@ -14,9 +36,17 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { name, email, phone, countryCode, product, country } = body;
 
-        // Basic validation
         if (!name || !email || !phone) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+        }
+
+        // Check for duplicate email + product combination
+        const existing = await readLeads();
+        const isDuplicate = existing.some(
+            (lead) => lead.email === email && lead.product === product
+        );
+        if (isDuplicate) {
+            return NextResponse.json({ success: true, lead: { id: 'existing' } });
         }
 
         const newLead = {
@@ -25,23 +55,12 @@ export async function POST(request: Request) {
             name,
             email,
             phone: `${countryCode} ${phone}`,
-            product,
-            countryOfInterest: country
+            product: product || '',
+            countryOfInterest: country || '',
         };
 
-        let leads = [];
-        if (fs.existsSync(LEADS_FILE)) {
-            const fileContent = fs.readFileSync(LEADS_FILE, 'utf-8');
-            try {
-                leads = JSON.parse(fileContent);
-            } catch (e) {
-                console.error("Error parsing leads file:", e);
-                leads = [];
-            }
-        }
-
-        leads.push(newLead);
-        fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2));
+        existing.push(newLead);
+        await writeLeads(existing);
 
         return NextResponse.json({ success: true, lead: newLead });
     } catch (error) {
@@ -50,15 +69,21 @@ export async function POST(request: Request) {
     }
 }
 
-export async function GET() {
+export async function GET(request: Request) {
     try {
-        if (!fs.existsSync(LEADS_FILE)) {
-            return NextResponse.json({ leads: [] });
+        // Simple token-based auth for admin API
+        const { searchParams } = new URL(request.url);
+        const token = searchParams.get('token');
+        const adminToken = process.env.ADMIN_TOKEN || 'admin123';
+
+        if (token !== adminToken) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
-        const fileContent = fs.readFileSync(LEADS_FILE, 'utf-8');
-        const leads = JSON.parse(fileContent);
+
+        const leads = await readLeads();
         return NextResponse.json({ leads });
     } catch (error) {
+        console.error('Error fetching leads:', error);
         return NextResponse.json({ error: 'Failed to fetch leads' }, { status: 500 });
     }
 }

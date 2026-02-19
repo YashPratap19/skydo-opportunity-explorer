@@ -15,10 +15,30 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Amazon Export Insights | Scale Your Business",
-  description: "Accelerate your Amazon exports by scaling into the right categories with real-time data.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://indianglobalsellers.com"),
+  title: "Indian Global Sellers | Amazon Export Insights",
+  description: "Discover high-potential Amazon export product opportunities with data-driven market intelligence. Built for Indian sellers scaling globally.",
   icons: {
-    icon: '/logo.png',
+    icon: '/favicon.ico',
+    apple: '/logo.png',
+  },
+  openGraph: {
+    title: "Indian Global Sellers | Amazon Export Insights",
+    description: "Discover high-potential Amazon export product opportunities with data-driven market intelligence. Built for Indian sellers scaling globally.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Indian Global Sellers",
+    images: [{ url: "/logo.png", width: 660, height: 471, alt: "Indian Global Sellers" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Indian Global Sellers | Amazon Export Insights",
+    description: "Discover high-potential Amazon export product opportunities with data-driven market intelligence.",
+    images: ["/logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

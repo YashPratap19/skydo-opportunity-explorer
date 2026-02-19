@@ -49,9 +49,7 @@ export function ProductShowcase({ images = [] }: ProductShowcaseProps) {
                                     fill
                                     className="object-cover mix-blend-multiply opacity-90 hover:opacity-100 transition-opacity"
                                     onError={(e) => {
-                                        // Fallback logic could go here, or just hide
                                         (e.target as HTMLImageElement).style.display = 'none';
-                                        (e.target as HTMLImageElement).parentElement!.innerText = "Add image to public/products";
                                     }}
                                 />
                             </div>

@@ -14,8 +14,8 @@ export function InsightsCard({ data, loading, isLocked = false, onUnlock }: Insi
         return (
             <div className="h-full min-h-[500px] bg-white/80 backdrop-blur-md rounded-3xl border border-white/50 shadow-glass p-8 flex flex-col items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-transparent animate-pulse"></div>
-                <div className="w-16 h-16 border-4 border-blue-100 border-t-[--color-brand-blue] rounded-full animate-spin mb-4 relative z-10"></div>
-                <p className="text-[--color-brand-blue] font-medium animate-pulse relative z-10">Running compatibility analysis...</p>
+                <div className="w-16 h-16 border-4 border-blue-100 border-t-[--color-brand-accent] rounded-full animate-spin mb-4 relative z-10"></div>
+                <p className="text-[--color-brand-accent] font-medium animate-pulse relative z-10">Running compatibility analysis...</p>
             </div>
         );
     }

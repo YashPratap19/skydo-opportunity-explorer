@@ -16,9 +16,11 @@ export interface OpportunityRow {
 }
 
 export interface LeadData {
+    id: string;
+    submittedAt: string;
     name: string;
     email: string;
     phone: string;
-    selectedProduct?: string;
-    category?: string;
+    product: string;
+    countryOfInterest: string;
 }
