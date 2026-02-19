@@ -84,7 +84,7 @@ export function LeadCaptureForm({ product, country, onSuccess }: LeadCaptureForm
                         placeholder="Full Name"
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 backdrop-blur-sm focus:bg-white focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 hover:border-blue-300 outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm"
                         required
                         aria-required="true"
                     />
@@ -97,19 +97,19 @@ export function LeadCaptureForm({ product, country, onSuccess }: LeadCaptureForm
                         placeholder="Work Email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 backdrop-blur-sm focus:bg-white focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 hover:border-blue-300 outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm"
                         required
                         aria-required="true"
                     />
                 </div>
-                <fieldset className="flex gap-2">
+                <fieldset className="flex flex-col sm:flex-row gap-2">
                     <legend className="sr-only">Phone number with country code</legend>
                     <label htmlFor="lead-country-code" className="sr-only">Country code</label>
                     <select
                         id="lead-country-code"
                         value={countryCode}
                         onChange={e => setCountryCode(e.target.value)}
-                        className="w-24 px-2 py-3 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all text-sm"
+                        className="w-24 px-2 py-3 rounded-xl border border-slate-200 bg-white/50 backdrop-blur-sm focus:bg-white focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 hover:border-blue-300 outline-none transition-all duration-300 text-sm shadow-sm cursor-pointer"
                     >
                         <option value="+91">+91</option>
                         <option value="+1">+1</option>
@@ -127,7 +127,7 @@ export function LeadCaptureForm({ product, country, onSuccess }: LeadCaptureForm
                         placeholder="Phone Number"
                         value={phone}
                         onChange={e => setPhone(e.target.value)}
-                        className="flex-1 px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
+                        className="flex-1 px-4 py-3 rounded-xl border border-slate-200 bg-white/50 backdrop-blur-sm focus:bg-white focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 hover:border-blue-300 outline-none transition-all duration-300 placeholder:text-slate-400 shadow-sm"
                         required
                         aria-required="true"
                     />
@@ -138,14 +138,21 @@ export function LeadCaptureForm({ product, country, onSuccess }: LeadCaptureForm
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-[#EA580C] hover:bg-[#C2410C] disabled:bg-slate-300 text-white font-bold text-lg py-3 rounded-xl shadow-lg shadow-orange-500/20 transition-all hover:-translate-y-1 active:translate-y-0 mt-2"
+                    className="w-full bg-gradient-to-r from-orange-500 to-[#EA580C] hover:from-orange-400 hover:to-[#C2410C] disabled:from-slate-300 disabled:to-slate-400 text-white font-bold text-lg py-4 rounded-xl shadow-[0_0_20px_-5px_rgba(234,88,12,0.4)] hover:shadow-[0_0_30px_-5px_rgba(234,88,12,0.6)] transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] mt-4 flex items-center justify-center gap-2 group"
                 >
                     {loading ? (
                         <span className="flex items-center justify-center gap-2">
                             <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
                             Processing...
                         </span>
-                    ) : "Get Free Report"}
+                    ) : (
+                        <>
+                            Get Free Report
+                            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </>
+                    )}
                 </button>
             </div>
         </form>

@@ -22,7 +22,7 @@ export function InsightsCard({ data, loading, isLocked = false, onUnlock }: Insi
 
     if (!data) {
         return (
-            <div className="h-full min-h-[500px] bg-white/40 backdrop-blur-sm rounded-3xl border-2 border-dashed border-gray-200 p-8 flex flex-col items-center justify-center text-center text-gray-400 animate-fade-in-up">
+            <div className="h-full min-h-[400px] md:min-h-[500px] bg-white/40 backdrop-blur-sm rounded-3xl border-2 border-dashed border-gray-200 p-6 md:p-8 flex flex-col items-center justify-center text-center text-gray-400 animate-fade-in-up">
                 <div className="w-20 h-20 bg-gray-50 rounded-full mb-6 flex items-center justify-center shadow-inner">
                     <svg className="w-10 h-10 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -36,7 +36,7 @@ export function InsightsCard({ data, loading, isLocked = false, onUnlock }: Insi
 
     return (
         <div className="space-y-6 relative">
-            <div className="glass-panel p-8 rounded-3xl animate-fade-in-up relative overflow-hidden min-h-[400px]">
+            <div className="glass-panel p-6 md:p-8 rounded-3xl animate-fade-in-up relative overflow-hidden min-h-[400px]">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-8 gap-4 border-b border-slate-200/50 pb-6 relative z-10">
                     <div>
                         <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Category Opportunity Snapshot</div>
@@ -53,23 +53,23 @@ export function InsightsCard({ data, loading, isLocked = false, onUnlock }: Insi
                 <div className={`grid grid-cols-1 md:grid-cols-3 gap-5 transition-all duration-500 ${isLocked ? 'blur-md opacity-40 select-none' : ''}`}>
                     {/* Key Metrics - Bento Grid */}
                     <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <InsightMetric label="Consumer Demand" score={data.DemandScore} />
-                        <InsightMetric label="Growth Potential" score={data.GrowthScore} />
-                        <InsightMetric label="Competition Level" score={data.CompetitionScore} />
-                        <InsightMetric label="Unit Economics" score={data.UnitEconomicsScore} />
+                        <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}><InsightMetric label="Consumer Demand" score={data.DemandScore} /></div>
+                        <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}><InsightMetric label="Growth Potential" score={data.GrowthScore} /></div>
+                        <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}><InsightMetric label="Competition Level" score={data.CompetitionScore} /></div>
+                        <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}><InsightMetric label="Unit Economics" score={data.UnitEconomicsScore} /></div>
                     </div>
 
                     {/* Secondary Metrics */}
                     <div className="md:col-span-1 space-y-4">
-                        <InsightMetric label="Differentiation" score={data.DifferentiationScore} />
-                        <InsightMetric label="Compliance Risk" score={data.ComplianceRiskScore} />
+                        <div className="animate-fade-in-up" style={{ animationDelay: "0.5s" }}><InsightMetric label="Differentiation" score={data.DifferentiationScore} /></div>
+                        <div className="animate-fade-in-up" style={{ animationDelay: "0.6s" }}><InsightMetric label="Compliance Risk" score={data.ComplianceRiskScore} /></div>
                     </div>
                 </div>
             </div>
 
             {/* Actionable Steps - Also blurred if locked */}
             <div
-                className={`bg-slate-900 text-white rounded-3xl p-8 shadow-floating animate-fade-in-up transition-all duration-500 ${isLocked ? 'blur-sm opacity-60 select-none pointer-events-none mt-20' : ''}`}
+                className={`bg-slate-900 text-white rounded-3xl p-6 md:p-8 shadow-floating animate-fade-in-up transition-all duration-500 ${isLocked ? 'blur-sm opacity-60 select-none pointer-events-none mt-20' : ''}`}
                 style={{ animationDelay: '0.1s' }}
             >
                 <h3 className="font-bold text-xl mb-6 flex items-center gap-3">
@@ -96,8 +96,8 @@ export function InsightsCard({ data, loading, isLocked = false, onUnlock }: Insi
 
             {/* Locked State Overlay - Positioned over both */}
             {isLocked && (
-                <div className="absolute top-[160px] left-0 right-0 z-30 flex justify-center px-4">
-                    <div className="bg-slate-50 p-8 rounded-3xl shadow-2xl border border-white/50 w-full max-w-lg transform animate-scale-in">
+                <div id="lead-form" className="absolute top-[320px] md:top-[160px] left-0 right-0 z-30 flex justify-center px-4 scroll-mt-32">
+                    <div className="bg-slate-50 p-6 md:p-8 rounded-3xl shadow-2xl border border-white/50 w-full max-w-lg transform animate-scale-in">
                         <LeadCaptureForm
                             product={data.Product}
                             country="United States"

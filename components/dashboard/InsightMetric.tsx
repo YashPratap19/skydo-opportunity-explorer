@@ -27,17 +27,18 @@ export function InsightMetric({ label, score, maxScore = 100 }: InsightMetricPro
     const offset = circumference - (score / maxScore) * circumference;
 
     return (
-        <div className="p-4 rounded-2xl bg-white/50 border border-slate-100/50 hover:bg-white/80 hover:shadow-md hover:-translate-y-0.5 transition-all group flex items-center justify-between gap-4 backdrop-blur-sm">
-            <div className="flex flex-col">
+        <div className="p-5 rounded-2xl bg-white/60 border border-slate-100/60 hover:bg-white/90 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 transition-all duration-300 group flex items-center justify-between gap-4 backdrop-blur-md relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
+            <div className="flex flex-col relative z-10">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{label}</span>
                 <span className={cn("text-sm font-bold px-2 py-0.5 rounded-full w-fit bg-opacity-10", textClass.replace("text-", "bg-"), textClass)}>
                     {statusLabel}
                 </span>
             </div>
 
-            <div className="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
+            <div className="relative w-16 h-16 flex-shrink-0 flex items-center justify-center z-10">
                 {/* Background Ring */}
-                <svg className="w-full h-full transform -rotate-90">
+                <svg className="w-full h-full transform -rotate-90 filter drop-shadow-sm">
                     <circle
                         cx="50%" cy="50%" r={radius}
                         stroke="currentColor" strokeWidth="4"

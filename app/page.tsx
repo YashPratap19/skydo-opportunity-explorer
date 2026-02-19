@@ -67,6 +67,11 @@ export default function Dashboard() {
     }
 
     setLoadingInsights(false);
+
+    // Scroll to the lead capture form slightly after loading finishes
+    setTimeout(() => {
+      scrollTo("lead-form");
+    }, 100);
   };
 
   const scrollTo = (id: string) => {
@@ -111,20 +116,22 @@ export default function Dashboard() {
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600" aria-hidden="true"></span>
               Market Intelligence v2.0
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-[--color-brand-primary] mb-6 leading-[1.1] tracking-tight">
-              Find your next winning <span className="block text-gradient">Amazon export product</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[--color-brand-primary] mb-4 sm:mb-6 leading-[1.1] tracking-tight">
+              Find your next winning <span className="block animate-text-shine pb-2">Amazon export product</span>
             </h1>
-            <p className="text-slate-500 text-lg font-medium max-w-2xl leading-relaxed">
+            <p className="text-slate-500 text-base sm:text-lg font-medium max-w-2xl leading-relaxed">
               Product-level insights on demand, competition, unit economics, and risk — built for Indian sellers scaling globally.
             </p>
             <button
               onClick={() => scrollTo('selection-panel')}
-              className="mt-6 inline-flex items-center gap-2 bg-slate-900 text-white font-bold text-base px-6 py-3 rounded-2xl shadow-lg shadow-slate-900/20 hover:shadow-slate-900/40 hover:-translate-y-1 active:translate-y-0 active:scale-[0.98] transition-all group"
+              className="mt-6 inline-flex items-center gap-3 bg-slate-900 border border-slate-700/50 text-white font-bold text-base px-8 py-4 rounded-full shadow-[0_0_40px_-10px_rgba(15,23,42,0.4)] hover:shadow-[0_0_60px_-15px_rgba(15,23,42,0.6)] hover:-translate-y-1 hover:bg-slate-800 active:translate-y-0 active:scale-[0.98] transition-all duration-300 group"
             >
-              <span>Explore Products</span>
-              <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-cyan-200 transition-colors">Explore Products</span>
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
             </button>
           </div>
 
@@ -137,8 +144,8 @@ export default function Dashboard() {
         <div id="selection-panel" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-24">
           <div className="lg:col-span-4 relative z-20 sticky top-28">
             {dataError ? (
-              <div className="glass-panel rounded-3xl p-8 text-center">
-                <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="glass-panel rounded-3xl p-6 md:p-8 text-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
                 </div>
                 <h3 className="text-lg font-semibold text-slate-700 mb-2">Unable to load data</h3>

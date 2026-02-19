@@ -54,7 +54,7 @@ export function SelectionPanel({
     }, [selectedCategory]);
 
     return (
-        <div className="glass-panel rounded-3xl p-8 h-full flex flex-col justify-center animate-fade-in-up">
+        <div className="glass-panel rounded-3xl p-6 md:p-8 h-full flex flex-col justify-center animate-fade-in-up">
             <div className="space-y-8">
                 {/* Country Selection */}
                 <div className="group">
@@ -145,7 +145,7 @@ export function SelectionPanel({
                     )}
                 </div>
 
-                <div className="pt-6">
+                <div className="pt-4 sm:pt-6">
                     <button
                         onClick={onGetInsights}
                         disabled={!selectedCategory || !selectedProduct}
@@ -168,7 +168,7 @@ export function SelectionPanel({
                 </div>
             </div>
 
-            <div className="mt-10 bg-blue-50/50 border border-blue-100/50 rounded-2xl p-5 text-sm text-slate-600 backdrop-blur-sm">
+            <div className="mt-8 sm:mt-10 bg-blue-50/50 border border-blue-100/50 rounded-2xl p-4 sm:p-5 text-sm text-slate-600 backdrop-blur-sm">
                 <p className="leading-relaxed">
                     <span className="font-bold text-blue-700">What you'll get:</span> comprehensive data on demand, growth trends, competition levels, and unit economics.
                 </p>
